@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<TITLE>Calculo IMC</TITLE>
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</HEAD>
+	<BODY> 
+		<h1>Calculadora de IMC</h1>
+		<form onsubmit="calcular_imc(event)">
+			<input type="number" name="altura" id="altura" onchange="calcular_imc(event)">
+			<input type="number" name="peso" id="peso" onchange="calcular_imc(event)">
+			<button type="submit"> calcular imc</button>
+		</form>
+		<h2 id="resu"></h2>
+		<img src="" id="zapallo">
+			<SCRIPT type="text/javascript">
+			function calcular_imc(event) {
+				event.preventDefault();
+				var altura;
+				var peso;
+				altura = document.getElementById("altura").value/100;
+				peso = document.getElementById("peso").value;
+				zap = document.getElementById("zapallo");
+				imc = peso/(altura*altura);
+				document.getElementById("resu").innerText = imc;
+				if (imc < 18.5) {
+					zap.setAttribute("src","img/flaco.png");
+				}
+				
+				
+				
+				if (imc > 18.6 && imc < 24.9){
+					zap.setAttribute("src", " img/saludable.png");
+				} else if(imc > 25 && imc < 29.9){
+				zap.setAttribute("src", "img/sobrepeso.png");
+				}
+				if(imc > 30 && imc < 34.9) {
+					zap.setAttribute("src", "img/obesidad_1.png");
+				}
+				if(imc > 35 && imc < 39.9){
+					zap.setAttribute("src", "img/obesidad_grado_2.png");
+				}else if(imc > 40){
+				zap.setAttribute("src","img/obesidad grado 3.png");	
+				}			
+			}
+			
+		</SCRIPT>
+	</BODY>
+</HTML>
