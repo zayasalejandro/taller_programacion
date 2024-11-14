@@ -12,6 +12,7 @@
 			<input type="number" name="altura" id="altura" onchange="calcular_imc(event)">
 			<input type="number" name="peso" id="peso" onchange="calcular_imc(event)">
 			<button type="submit"> calcular imc</button>
+			<p>El índice de masa corporal (IMC) es un número que se calcula con base en el peso y la estatura de la persona. Para la mayoría de las personas, el IMC es un indicador confiable de la gordura y se usa para identificar las categorías de peso que pueden llevar a problemas de salud que fue ideada por Adolphe Quetelet.</p>
 		</form>
 		<h2 id="resu"></h2>
 		<img src="" id="zapallo">
@@ -37,12 +38,12 @@
 				zap.setAttribute("src", "img/sobrepeso.png");
 				}
 				if(imc > 30 && imc < 34.9) {
-					zap.setAttribute("src", "img/obesidad_1.png");
+					zap.setAttribute("src", "img/obesidad_grado_1.png");
 				}
 				if(imc > 35 && imc < 39.9){
 					zap.setAttribute("src", "img/obesidad_grado_2.png");
 				}else if(imc > 40){
-				zap.setAttribute("src","img/obesidad grado 3.png");	
+				zap.setAttribute("src","img/obesidad_grado_3.png");	
 				}			
 			}
 			
