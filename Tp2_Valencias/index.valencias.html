@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Conversiones de Longitud</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1ff188;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 300px;
+            width: 100%;
+        }
+        input, select {
+            margin: 10px 0;
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+            border: 1px solid #919191;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #9b2682;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0b3664;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Calculadora chill de Conversiones de unidades de Longitud</h2>
+    <input type="number" id="inputValue" placeholder="Ingresa el valor">
+    
+    <label for="fromUnit">De:</label>
+    <select id="fromUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>
+    
+    <label for="toUnit">A:</label>
+    <select id="toUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>
+    
+    <button onclick="convert()">Convertir</button>
+    
+    <h3 id="result">Resultado: </h3>
+</div>
+
+<script>
+    function convert() {
+        const inputValue = parseFloat(document.getElementById('inputValue').value);
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;
+        
+        if (isNaN(inputValue)) {
+            document.getElementById('result').innerText = "Por favor, ingresa un valor numérico.";
+            return;
+        }
+
+        const conversionFactors = {
+            km: 1000000, // Kilómetro a micrómetros
+            m: 1000,     // Metro a micrómetros
+            cm: 10,      // Centímetro a micrómetros
+            mm: 1        // Milímetro a micrómetros
+        };
+
+        // Convertir el valor de entrada a micrómetros
+        const valueInMicrometers = inputValue * conversionFactors[fromUnit];
+        
+        // Convertir de micrómetros a la unidad deseada
+        const convertedValue = valueInMicrometers / conversionFactors[toUnit];
+
+        document.getElementById('result').innerText = `Resultado: ${convertedValue} ${toUnit}`;
+    }
+</script>
+
+</body>
+</html>
